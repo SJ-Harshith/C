@@ -18,7 +18,7 @@ int pop(){
 	return (stack[top--]);
 }
 void display(){
-	int i;
+	/* int i;
 	if(top==-1)
 	printf("Stack is empty\n");
 	else{
@@ -36,7 +36,28 @@ flag=0;
 if(flag==0)
 printf("It is not a palindrome\n");
 else
-printf("It is a palindrome \n");
+printf("It is a palindrome \n"); */
+ int num,rem,ncopy;
+        printf("Enter the value of the num: ");
+        scanf("%d",&num);
+        ncopy=num;
+        top=-1;
+        while (num!=0)
+        {
+                rem=num%10;
+                push(rem);
+                num=num/10;
+        }
+        while (ncopy!=0)
+        {     rem=ncopy%10;
+                 ncopy=ncopy/10;
+                if (rem!=pop())
+                {  
+                        printf("Given number is not a palindrome");
+                         return ;
+                }
+}
+    printf("It is a palindrome");
 }
 int main(){
 	int ele,choice;
