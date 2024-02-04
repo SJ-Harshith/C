@@ -124,11 +124,7 @@ int main(){
                break;
         case 5:display();
                break;
-        case 6:while(temp!=NULL){
-             deletebegin;
-             deleteend;
-              }
-              exit(0);
+        case 6:exit(0);
         default:printf("invalid choice\n");
         }
     }
