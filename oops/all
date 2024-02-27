@@ -1,0 +1,100 @@
+class MyThread extends Thread {
+    public MyThread(String name) {
+        // Calling superclass constructor
+        super(name);
+        start();
+    }
+
+    // Overriding run method to define thread behavior
+    public void run() {
+        for(int i = 1; i <= 5; i++)
+            System.out.println(Thread.currentThread().getName() + " count = " + i);
+        try {
+            // Simulating some task in the thread
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println("Child thread " + getName() + " interrupted.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an instance of MyThread
+        MyThread thread = new MyThread("childThread");
+
+        // Starting the child thread
+        
+
+        // Main thread continues execution
+        for(int i = 1; i <= 5; i++)
+            System.out.println(Thread.currentThread().getName() + " count = " + i);
+       
+        // Main thread waits for the child thread to complete
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            System.out.println("Main thread interrupted while waiting for child thread.");
+        }
+    }
+}
+
+
+
+
+import java.util.*;
+class MyRunnable implements Runnable{
+    public void run(){
+        try{
+        System.out.println(Thread.currentThread().getName()+"is running");
+        Thread.sleep(500);
+         }
+        catch(InterruptedException e){
+            System.out.println(Thread.currentThread().getName()+"is inter is interupted ");
+        }
+}
+}
+public class threadcreationex{
+public static void main(String args[]){
+    Thread thread1=new Thread(new MyRunnable(),"Thread 1");
+    Thread thread2=new Thread(new MyRunnable(),"Thread 2");
+    Thread thread3=new Thread(new MyRunnable(),"Thread 3");
+    thread1.start();
+    thread2.start();
+    thread3.start();
+    System.out.println("main thread is running");
+}
+}
+
+
+
+import java.util.*;
+class Pexception extends Exception
+{
+    Pexception(String msg)
+    {
+        super(msg);
+    }
+}
+public class test{
+    public static void divide(double a,double b)throws Pexception{
+        if(b==0)
+            throw new Pexception("Division by zero not possible");
+        double c=a/b;
+        System.out.println("c="+c);
+    }
+    public static void main(String args[]){
+        double a=10,b=0;
+        try{
+            divide(a,b);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        finally
+        {
+            System.out.println("this is finally block");
+        }
+    }
+}
+
